@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # If the domain changes, update it here too
-Sitemap: https://gestureboardv1.vercel.app/sitemap.xml
+Sitemap: https://gestureboard-app.vercel.app/sitemap.xml

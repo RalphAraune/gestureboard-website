@@ -77,14 +77,14 @@ All Download buttons and the "Version · Size" labels update from this object.
 `index.html` also contains the same link in each button's `href`. That copy is only a fallback for visitors who have JavaScript turned off. Search for `GestureBoard_Setup_` to update it too.
 
 ### 2. Site domain (SEO)
-The live site is **https://gestureboardv1.vercel.app**. If the domain ever changes, update it in:
+The live site is **https://gestureboard-app.vercel.app**. If the domain ever changes, update it in:
 - `index.html`: `canonical`, `og:url`, `og:image`, `twitter:image`
 - `robots.txt`
 - `sitemap.xml`
 
-Tip: search the whole project for `gestureboardv1.vercel.app`.
+Tip: search the whole project for `gestureboard-app.vercel.app`.
 
-To get indexed faster, submit `https://gestureboardv1.vercel.app/sitemap.xml` in [Google Search Console](https://search.google.com/search-console).
+To get indexed faster, submit `https://gestureboard-app.vercel.app/sitemap.xml` in [Google Search Console](https://search.google.com/search-console).
 
 ### 3. Gesture guide
 In `index.html`, find `EDIT GESTURES HERE`. Each gesture is one `<li class="gesture">` block with an emoji, a name, and what it does.
