@@ -74,6 +74,18 @@
     <span class="bg__orb bg__orb--1"></span>
     <span class="bg__orb bg__orb--2"></span>
     <span class="bg__orb bg__orb--3"></span>
+    <canvas class="bg__net"></canvas>
+    <svg class="bg__hand bg__hand--2" viewBox="0 0 200 150">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path class="bg__line" d="M100 135 V95 M100 95 L70 40 M100 95 L95 25 M100 95 L118 30 M100 95 L135 50 M100 95 L60 75 L45 70 M60 75 Q70 130 100 135 Q140 130 150 75 L135 50"/>
+      </g>
+      <g fill="currentColor">
+        <circle class="bg__dot" cx="100" cy="95" r="2.8"/><circle class="bg__dot" cx="70" cy="40" r="2.2"/>
+        <circle class="bg__dot" cx="95" cy="25" r="2.2"/><circle class="bg__dot" cx="118" cy="30" r="2.2"/>
+        <circle class="bg__dot" cx="135" cy="50" r="2.2"/><circle class="bg__dot" cx="45" cy="70" r="2.2"/>
+        <circle class="bg__dot" cx="100" cy="135" r="2.2"/>
+      </g>
+    </svg>
     <svg class="bg__hand" viewBox="0 0 200 150">
       <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
         <path class="bg__line" d="M100 135 V95 M100 95 L70 40 M100 95 L95 25 M100 95 L118 30 M100 95 L135 50 M100 95 L60 75 L45 70 M60 75 Q70 130 100 135 Q140 130 150 75 L135 50"/>
@@ -121,7 +133,7 @@
       <div class="container hero__grid">
         <div class="hero__copy">
           <p class="eyebrow">Free desktop app for Windows</p>
-          <h1>Control your slides with a wave of your hand.</h1>
+          <h1>Control your slides with <span class="grad-text">a wave of your hand.</span></h1>
           <p class="lead">
             <strong>GestureBoard</strong> turns your webcam or phone into a presentation remote.
             Move between slides, point, draw, and write using only hand gestures. It's built for the
@@ -150,7 +162,9 @@
             </div>
             <div class="mock__body">
               <div class="mock__cam">
-                <svg viewBox="0 0 200 150" aria-hidden="true">
+                <span class="mock__scan" aria-hidden="true"></span>
+                <span class="mock__corner mock__corner--tl"></span><span class="mock__corner mock__corner--br"></span>
+                <svg class="mock__hand" viewBox="0 0 200 150" aria-hidden="true">
                   <g fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M100 135 V95 M100 95 L70 40 M100 95 L95 25 M100 95 L118 30 M100 95 L135 50 M100 95 L60 75 L45 70"/>
                     <path d="M60 75 Q70 130 100 135 Q140 130 150 75 L135 50"/>
@@ -172,9 +186,25 @@
               </div>
             </div>
           </div>
+          <!-- Floating chips around the screenshot (decoration) -->
+          <span class="chip chip--1" aria-hidden="true">👉 Next slide</span>
+          <span class="chip chip--2" aria-hidden="true">✏️ Annotate</span>
+          <span class="chip chip--3" aria-hidden="true">📶 Works offline</span>
         </div>
       </div>
     </section>
+
+    <!-- Scrolling highlights strip -->
+    <div class="marquee" aria-label="Highlights">
+      <ul class="marquee__track">
+        <li>Free to use</li><li>Works offline</li><li>Phone as camera</li><li>No phone app needed</li>
+        <li>Android &amp; iPhone</li><li>Virtual mouse</li><li>Virtual whiteboard</li><li>Save as images</li><li>Windows 10/11</li>
+      </ul>
+      <ul class="marquee__track" aria-hidden="true">
+        <li>Free to use</li><li>Works offline</li><li>Phone as camera</li><li>No phone app needed</li>
+        <li>Android &amp; iPhone</li><li>Virtual mouse</li><li>Virtual whiteboard</li><li>Save as images</li><li>Windows 10/11</li>
+      </ul>
+    </div>
 
     <!-- ===== 3. FEATURES ===== -->
     <section class="section" id="features">

@@ -165,8 +165,101 @@ const DOWNLOAD_CONFIG = {
     try { localStorage.setItem("gb-theme", theme); } catch (_) { /* private mode etc. */ }
   });
 
-  /* ---------- Subtle scroll reveal ---------- */
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Background node network ----------
+     Floating points joined by lines, like hand-tracking landmarks.
+     Lines also reach toward the mouse. Colors come from the CSS
+     variables --net-rgb / --net-alpha, so it follows light/dark mode. */
+  (function network() {
+    const canvas = document.querySelector(".bg__net");
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext("2d");
+    let w = 0, h = 0, nodes = [], rgb = "34, 211, 238", alpha = 0.5, linkDist = 130, running = false;
+    const pointer = { x: -9999, y: -9999 };
+
+    function readColors() {
+      const cs = getComputedStyle(root);
+      rgb = cs.getPropertyValue("--net-rgb").trim() || rgb;
+      alpha = parseFloat(cs.getPropertyValue("--net-alpha")) || alpha;
+    }
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      linkDist = w < 600 ? 105 : 140;
+      const count = Math.max(22, Math.min(75, Math.round((w * h) / 17000)));
+      while (nodes.length < count) {
+        nodes.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, r: 1.2 + Math.random() * 1.6 });
+      }
+      nodes.length = count;
+      if (!running) draw();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        if (running) {
+          a.x += a.vx; a.y += a.vy;
+          if (a.x < 0 || a.x > w) a.vx *= -1;
+          if (a.y < 0 || a.y > h) a.vy *= -1;
+        }
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < linkDist) {
+            ctx.strokeStyle = `rgba(${rgb}, ${(1 - d / linkDist) * alpha * 0.7})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+        const pdx = a.x - pointer.x, pdy = a.y - pointer.y, pd = Math.sqrt(pdx * pdx + pdy * pdy);
+        if (pd < 190) {
+          ctx.strokeStyle = `rgba(${rgb}, ${(1 - pd / 190) * alpha})`;
+          ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(pointer.x, pointer.y); ctx.stroke();
+        }
+        ctx.fillStyle = `rgba(${rgb}, ${alpha + 0.2})`;
+        ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+
+    function loop() {
+      if (!running) return;
+      draw();
+      requestAnimationFrame(loop);
+    }
+    function start() { if (!running && !reduceMotion && !document.hidden) { running = true; requestAnimationFrame(loop); } }
+    function stop() { running = false; }
+
+    readColors();
+    resize();
+    start();
+
+    let resizeTimer;
+    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 150); });
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+    window.addEventListener("pointermove", (e) => {
+      if (e.pointerType === "mouse") { pointer.x = e.clientX; pointer.y = e.clientY; }
+    }, { passive: true });
+    document.addEventListener("pointerleave", () => { pointer.x = pointer.y = -9999; });
+    // Re-read colors when light/dark mode changes
+    new MutationObserver(() => { readColors(); if (!running) draw(); })
+      .observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+  })();
+
+  /* ---------- Card spotlight follows the mouse ---------- */
+  document.querySelectorAll(".card, .gesture, .member").forEach((el) => {
+    el.addEventListener("pointermove", (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      el.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+  });
+
+  /* ---------- Subtle scroll reveal ---------- */
   if (!reduceMotion && "IntersectionObserver" in window) {
     document.documentElement.classList.add("js-reveal");
     const targets = document.querySelectorAll(".card, .steps li, .gesture, .reqs > div, .install li, .member, .faq details");
