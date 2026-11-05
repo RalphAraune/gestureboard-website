@@ -309,6 +309,19 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
 .member { text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 20px; }
 .member h3 { margin-bottom: 8px; }
 .member p { color: var(--muted); margin: 0; font-size: .92rem; }
+/* Facebook link: slides in on hover (mouse), always shown on touch screens */
+.member__fb {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  padding: 8px 16px; border-radius: 999px; font-size: .9rem; font-weight: 650; text-decoration: none;
+  color: #fff; background: #1877f2; box-shadow: 0 8px 20px -8px rgba(24, 119, 242, .7);
+  transition: opacity .25s ease, transform .25s ease, background-color .2s;
+}
+.member__fb svg { width: 18px; height: 18px; }
+.member__fb:hover { background: #0f62d6; }
+@media (hover: hover) {
+  .member__fb { opacity: 0; transform: translateY(8px); }
+  .member:hover .member__fb, .member:focus-within .member__fb { opacity: 1; transform: none; }
+}
 .member .member__role { display: inline-block; margin-bottom: 8px; padding: 3px 12px; border-radius: 999px; font-size: .85rem; font-weight: 650; color: var(--accent); background: rgba(34, 211, 238, .1); border: 1px solid rgba(34, 211, 238, .35); }
 .avatar {
   width: 112px; height: 112px; margin: 0 auto 16px; border-radius: 50%;
