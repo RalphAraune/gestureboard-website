@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ===== SEO =====
+       Replace https://gestureboard.example.com with your real domain
+       (also in robots.txt and sitemap.xml). -->
+  <title>GestureBoard – Gesture-Controlled Presentation App for Windows</title>
+  <meta name="description" content="GestureBoard lets teachers control PowerPoint and other presentations with hand gestures using a webcam or phone camera. Free, works offline, for Windows 10/11.">
+  <meta name="keywords" content="GestureBoard, gesture control, hand gesture presentation, slide control, virtual mouse, virtual whiteboard, computer vision, MediaPipe, OpenCV, teachers, Lourdes National High School, Cristal e-College, Bohol">
+  <meta name="author" content="Ralph Lawrence Araune, Kher Noel Sato, Princess Claire Balili">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#070f24">
+  <link rel="canonical" href="https://gestureboard.example.com/">
+
+  <!-- Open Graph (Facebook / Messenger previews) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GestureBoard">
+  <meta property="og:title" content="GestureBoard – Control your slides with a wave of your hand">
+  <meta property="og:description" content="A free Windows app that lets teachers control presentations with hand gestures. Works offline, and your phone can be the camera.">
+  <meta property="og:url" content="https://gestureboard.example.com/">
+  <meta property="og:image" content="https://gestureboard.example.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GestureBoard logo with the tagline: Control your slides with a wave of your hand.">
+  <meta property="og:locale" content="en_PH">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GestureBoard – Gesture-Controlled Presentation App">
+  <meta name="twitter:description" content="Control your slides with a wave of your hand. Free for Windows.">
+  <meta name="twitter:image" content="https://gestureboard.example.com/assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/logo/app_icon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GestureBoard",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "EducationalApplication",
+    "description": "A gesture-controlled desktop application for presentation control using computer vision.",
+    "softwareVersion": "1.0.0",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PHP" },
+    "author": [
+      { "@type": "Person", "name": "Ralph Lawrence Araune" },
+      { "@type": "Person", "name": "Kher Noel Sato" },
+      { "@type": "Person", "name": "Princess Claire Balili" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== 1. NAVBAR ===== -->
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="GestureBoard home">
+        <img src="assets/logo-96.png" alt="" width="36" height="36">
+        <span>GestureBoard</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__menu" id="nav-menu" aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#gestures">Gestures</a>
+        <a href="#install">Install</a>
+        <a href="#faq">FAQ</a>
+        <a href="#team">Team</a>
+        <a class="btn btn--sm btn--primary js-download" href="https://github.com/RalphAraune/Gestureboard/releases/latest/download/GestureBoard_Setup_1.0.0.exe">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== 2. HERO ===== -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Free desktop app for Windows</p>
+          <h1>Control your slides with a wave of your hand.</h1>
+          <p class="lead">
+            <strong>GestureBoard</strong> turns your webcam or phone into a presentation remote.
+            Move between slides, point, draw, and write using only hand gestures. It's built for the
+            teachers of Lourdes National High School.
+          </p>
+          <div class="cta">
+            <a class="btn btn--primary btn--lg js-download" href="https://github.com/RalphAraune/Gestureboard/releases/latest/download/GestureBoard_Setup_1.0.0.exe">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7L3 18.5zM11 12.5h10V21l-10-1.4z"/></svg>
+              Download for Windows
+            </a>
+            <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
+          </div>
+          <p class="dl-meta js-download-meta">Version 1.0.0 · 137 MB · Windows 10/11 (64-bit)</p>
+        </div>
+
+        <div class="hero__shot">
+          <!-- APP SCREENSHOT
+               When you have a screenshot, save it as assets/screenshots/main.png and replace
+               the whole <div class="mock"> ... </div> below with:
+               <img class="shot" src="assets/screenshots/main.png" alt="GestureBoard main window" width="1280" height="800">
+          -->
+          <div class="mock" role="img" aria-label="Preview of the GestureBoard app window (placeholder)">
+            <div class="mock__bar">
+              <i></i><i></i><i></i>
+              <span>GestureBoard</span>
+            </div>
+            <div class="mock__body">
+              <div class="mock__cam">
+                <svg viewBox="0 0 200 150" aria-hidden="true">
+                  <g fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M100 135 V95 M100 95 L70 40 M100 95 L95 25 M100 95 L118 30 M100 95 L135 50 M100 95 L60 75 L45 70"/>
+                    <path d="M60 75 Q70 130 100 135 Q140 130 150 75 L135 50"/>
+                  </g>
+                  <g fill="#22d3ee">
+                    <circle cx="100" cy="95" r="5"/><circle cx="70" cy="40" r="4"/><circle cx="95" cy="25" r="4"/>
+                    <circle cx="118" cy="30" r="4"/><circle cx="135" cy="50" r="4"/><circle cx="45" cy="70" r="4"/>
+                    <circle cx="100" cy="135" r="4"/><circle cx="60" cy="75" r="3.5"/><circle cx="150" cy="75" r="3.5"/>
+                  </g>
+                </svg>
+                <span class="mock__tag">✋ Hand detected</span>
+              </div>
+              <div class="mock__side">
+                <span class="mock__pill mock__pill--on">Slide control</span>
+                <span class="mock__pill">Virtual mouse</span>
+                <span class="mock__pill">Annotate</span>
+                <span class="mock__pill">Whiteboard</span>
+                <span class="mock__status">● Camera active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. FEATURES ===== -->
+    <section class="section" id="features">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Features</p>
+          <h2>Everything you need at the front of the classroom</h2>
+          <p>No clicker, no running back to the keyboard. Teach from anywhere in the room.</p>
+        </header>
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4m0-5a1.5 1.5 0 0 1 3 0v5m0-4a1.5 1.5 0 0 1 3 0v6m0-3a1.5 1.5 0 0 1 3 0v4a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L3.6 14a1.5 1.5 0 0 1 2.5-1.7L7 13.5"/></svg></div>
+            <h3>Hand gesture slide control</h3>
+            <p>Go to the next or previous slide with a simple hand gesture in front of the camera.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l6 16 2.3-6.7L20 10z"/><path d="M13.5 13.5 19 19"/></svg></div>
+            <h3>Virtual mouse</h3>
+            <p>Move the cursor and click with your fingers. Open files and links without touching the PC.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11a2.1 2.1 0 0 0-3-3L5 16z"/><path d="M14 7l3 3"/></svg></div>
+            <h3>Digital annotation</h3>
+            <p>Draw and highlight directly on top of your slides using the mouse.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20l4-4 4 4M7 9c2-2 3 2 5 0s3 2 5 0"/></svg></div>
+            <h3>Virtual whiteboard</h3>
+            <p>Open a blank board to explain, solve, and sketch, using the mouse.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></div>
+            <h3>Save outputs as images</h3>
+            <p>Save your annotations and whiteboard work as images so you can share or reuse them.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5a15 15 0 0 1 11.3 3.8M5 12.5a10 10 0 0 1 3.4-2M14 10.2a10 10 0 0 1 5 2.3M8.5 16a5 5 0 0 1 7 0M12 20h.01M3 3l18 18"/></svg></div>
+            <h3>Works offline</h3>
+            <p>Everything runs on your PC. You don't need internet after installing.</p>
+          </article>
+          <article class="card card--wide">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+            <h3>Phone as camera</h3>
+            <p>No webcam? Scan a QR code with your phone and use it as the camera. You don't need to install an app, and it works on Android and iPhone over Wi-Fi, a hotspot, or USB tethering.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. HOW IT WORKS ===== -->
+    <section class="section section--alt" id="how">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">How it works</p>
+          <h2>Ready in four steps</h2>
+        </header>
+        <ol class="steps">
+          <li>
+            <h3>Install GestureBoard</h3>
+            <p>Download the installer and set it up on your Windows PC or laptop.</p>
+          </li>
+          <li>
+            <h3>Choose your camera</h3>
+            <p>Use the built-in webcam, or connect your phone by scanning the QR code.</p>
+          </li>
+          <li>
+            <h3>Open your presentation</h3>
+            <p>Start your slideshow in PowerPoint, Google Slides, or a PDF viewer.</p>
+          </li>
+          <li>
+            <h3>Control with gestures</h3>
+            <p>Raise your hand toward the camera and teach. GestureBoard tracks your hand in real time.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 5. GESTURE GUIDE ===== -->
+    <section class="section" id="gestures">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Gesture guide</p>
+          <h2>Learn the gestures</h2>
+          <p>Hold your hand clearly in front of the camera, about an arm's length away.</p>
+        </header>
+
+        <!-- ========== EDIT GESTURES HERE ==========
+             Each gesture is one <li class="gesture">. Copy a block to add one, delete it to remove.
+             - .gesture__icon : an emoji (or replace with <img src="assets/gestures/name.png" alt="">)
+             - <h3>           : the gesture name
+             - <p>            : what it does
+             The entries below are PLACEHOLDERS. Update them to match the app.
+        -->
+        <ul class="gestures">
+          <li class="gesture">
+            <span class="gesture__icon" aria-hidden="true">👉</span>
+            <div><h3>Swipe right</h3><p>Next slide</p></div>
+          </li>
+          <li class="gesture">
+            <span class="gesture__icon" aria-hidden="true">👈</span>
+            <div><h3>Swipe left</h3><p>Previous slide</p></div>
+          </li>
+          <li class="gesture">
+            <span class="gesture__icon" aria-hidden="true">☝️</span>
+            <div><h3>Index finger up</h3><p>Move the cursor (virtual mouse)</p></div>
+          </li>
+          <li class="gesture">
+            <span class="gesture__icon" aria-hidden="true">🤏</span>
+            <div><h3>Pinch</h3><p>Click</p></div>
+          </li>
+          <li class="gesture">
+            <span class="gesture__icon" aria-hidden="true">✌️</span>
+            <div><h3>Two fingers up</h3><p>Switch mode</p></div>
+          </li>
+          <li class="gesture">
+            <span class="gesture__icon" aria-hidden="true">✋</span>
+            <div><h3>Open palm</h3><p>Pause gesture control</p></div>
+          </li>
+        </ul>
+        <!-- ========== END GESTURES ========== -->
+      </div>
+    </section>
+
+    <!-- ===== 6. PHONE AS CAMERA ===== -->
+    <section class="section section--alt" id="phone">
+      <div class="container phone">
+        <div class="phone__copy">
+          <p class="eyebrow">Phone as camera</p>
+          <h2>No webcam? Use your phone.</h2>
+          <p>You don't need to install an app. It works on <strong>Android</strong> and <strong>iPhone</strong> through the phone's browser.</p>
+          <ol class="mini-steps">
+            <li><strong>Connect both devices.</strong> Put your phone and PC on the same Wi-Fi, use your phone's hotspot, or use USB tethering.</li>
+            <li><strong>Scan the QR code</strong> shown in GestureBoard using your phone's camera.</li>
+            <li><strong>Allow camera access</strong> when the browser asks. That's it, your phone is now the camera.</li>
+          </ol>
+        </div>
+        <div class="phone__art" aria-hidden="true">
+          <div class="phone__device">
+            <div class="phone__qr">
+              <svg viewBox="0 0 21 21" shape-rendering="crispEdges"><path fill="#070f24" d="M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0z"/><path fill="#fff" d="M1 1h5v5H1zM15 1h5v5h-5zM1 15h5v5H1z"/><path fill="#070f24" d="M2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2zM8 1h1v2H8zM10 0h2v1h-2zM9 4h3v1H9zM8 6h1v3H8zM10 7h2v2h-2zM13 8h2v1h-2zM0 8h2v1H0zM3 9h3v1H3zM16 8h4v1h-4zM18 10h3v2h-3zM14 10h2v3h-2zM8 10h1v1H8zM10 11h3v1h-3zM9 13h2v2H9zM12 14h2v1h-2zM8 16h2v1H8zM11 16h3v2h-3zM15 15h2v2h-2zM18 14h3v1h-3zM17 17h4v1h-4zM15 19h2v2h-2zM9 18h1v3H9zM12 19h2v2h-2zM19 19h2v2h-2zM1 10h1v2H1zM4 11h2v2H4z"/></svg>
+            </div>
+            <span>Scan to connect</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. SYSTEM REQUIREMENTS ===== -->
+    <section class="section" id="requirements">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">System requirements</p>
+          <h2>What you need</h2>
+        </header>
+        <!-- Edit values here if needed. "Storage" is an estimate; confirm it after installing. -->
+        <dl class="reqs">
+          <div><dt>Operating system</dt><dd>Windows 10 or 11 (64-bit)</dd></div>
+          <div><dt>Camera</dt><dd>Built-in or USB webcam, <em>or</em> any Android/iPhone smartphone</dd></div>
+          <div><dt>Memory (RAM)</dt><dd>4 GB minimum, 8 GB recommended</dd></div>
+          <div><dt>Storage</dt><dd>About 500 MB free space</dd></div>
+          <div><dt>Processor</dt><dd>Intel Core i3 / AMD Ryzen 3 or better</dd></div>
+          <div><dt>Internet</dt><dd>Only needed to download the installer</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== 8. INSTALL GUIDE ===== -->
+    <section class="section section--alt" id="install">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Install guide</p>
+          <h2>Installing GestureBoard</h2>
+          <p>Windows may show a blue warning screen the first time. This is normal for new apps from small developers.</p>
+        </header>
+
+        <ol class="install">
+          <li>
+            <h3>Download the installer</h3>
+            <p>Click <strong>Download for Windows</strong> and open <code>GestureBoard_Setup_1.0.0.exe</code> from your Downloads folder.</p>
+          </li>
+          <li>
+            <h3>If you see "Windows protected your PC"</h3>
+            <p>Click <strong>More info</strong>.</p>
+            <div class="smartscreen" aria-hidden="true">
+              <p class="smartscreen__title">Windows protected your PC</p>
+              <p class="smartscreen__text">Microsoft Defender SmartScreen prevented an unrecognized app from starting…</p>
+              <span class="smartscreen__link">More info</span>
+            </div>
+          </li>
+          <li>
+            <h3>Click "Run anyway"</h3>
+            <p>The button appears at the bottom after clicking More info.</p>
+            <div class="smartscreen" aria-hidden="true">
+              <p class="smartscreen__text">App: GestureBoard_Setup_1.0.0.exe</p>
+              <div class="smartscreen__btns"><span class="hl">Run anyway</span><span>Don't run</span></div>
+            </div>
+          </li>
+          <li>
+            <h3>Click Next</h3>
+            <p>Follow the setup wizard. You can keep the default install location.</p>
+          </li>
+          <li>
+            <h3>Click Install</h3>
+            <p>Wait for it to finish, then open GestureBoard from the Start menu or desktop shortcut.</p>
+          </li>
+        </ol>
+
+        <div class="cta cta--center">
+          <a class="btn btn--primary btn--lg js-download" href="https://github.com/RalphAraune/Gestureboard/releases/latest/download/GestureBoard_Setup_1.0.0.exe">Download for Windows</a>
+        </div>
+        <p class="dl-meta dl-meta--center js-download-meta">Version 1.0.0 · 137 MB · Windows 10/11 (64-bit)</p>
+      </div>
+    </section>
+
+    <!-- ===== 9. FAQ ===== -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <header class="section__head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Frequently asked questions</h2>
+        </header>
+        <div class="faq">
+          <details>
+            <summary>Is GestureBoard free?</summary>
+            <p>Yes. GestureBoard is completely free to download and use.</p>
+          </details>
+          <details>
+            <summary>Does it need internet?</summary>
+            <p>No. You only need internet to download the installer. After that, GestureBoard runs fully offline. If you use your phone as the camera, the phone and PC only need to be on the same local network (Wi-Fi, hotspot, or USB tethering). That network doesn't need internet access.</p>
+          </details>
+          <details>
+            <summary>Does it work on Mac or Linux?</summary>
+            <p>Not at the moment. GestureBoard is made for Windows 10 and 11 (64-bit) only.</p>
+          </details>
+          <details>
+            <summary>Is it safe? Why does Windows show a warning?</summary>
+            <p>Yes. The "Windows protected your PC" message appears because the app is new and isn't signed with a paid code-signing certificate. It doesn't mean the app is harmful. GestureBoard doesn't collect or upload your camera feed, because all processing happens on your computer. The source code is public on <a href="https://github.com/RalphAraune/Gestureboard" target="_blank" rel="noopener">GitHub</a>.</p>
+          </details>
+          <details>
+            <summary>Can I use it with PowerPoint and Google Slides?</summary>
+            <p>Yes. Gesture slide control sends standard next/previous keystrokes, so it works with most slideshow apps, including PowerPoint, Google Slides in a browser, and PDF viewers.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. ABOUT THE TEAM ===== -->
+    <section class="section section--alt" id="team">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">About the team</p>
+          <h2>Made in Bohol, for Bohol teachers</h2>
+          <p>
+            GestureBoard is a capstone project by BS Information Technology students of
+            <strong>Cristal e-College, Panglao, Bohol</strong> (2026). We built it for the teachers of
+            <strong>Lourdes National High School</strong> using Python, OpenCV, MediaPipe, and PyQt5.
+          </p>
+        </header>
+        <!-- To add photos: replace <span class="avatar">RA</span> with
+             <img class="avatar" src="assets/team/ralph.jpg" alt="Ralph Lawrence Araune" width="96" height="96" loading="lazy"> -->
+        <ul class="team">
+          <li class="member">
+            <span class="avatar" aria-hidden="true">RA</span>
+            <h3>Ralph Lawrence Araune</h3>
+            <p>BS Information Technology</p>
+          </li>
+          <li class="member">
+            <span class="avatar" aria-hidden="true">KS</span>
+            <h3>Kher Noel Sato</h3>
+            <p>BS Information Technology</p>
+          </li>
+          <li class="member">
+            <span class="avatar" aria-hidden="true">PB</span>
+            <h3>Princess Claire Balili</h3>
+            <p>BS Information Technology</p>
+          </li>
+        </ul>
+        <ul class="stack" aria-label="Built with">
+          <li>Python</li><li>OpenCV</li><li>MediaPipe</li><li>PyQt5</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 11. FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="brand" href="#top">
+          <img src="assets/logo-96.png" alt="" width="32" height="32" loading="lazy">
+          <span>GestureBoard</span>
+        </a>
+        <p class="footer__muted">A gesture-controlled desktop application for presentation control using computer vision.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#features">Features</a>
+        <a href="#install">Install guide</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/RalphAraune/Gestureboard" target="_blank" rel="noopener">GitHub</a>
+        <!-- FEEDBACK LINK: replace # with your Google Form (or other) URL -->
+        <a href="#" target="_blank" rel="noopener">Send feedback</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p>© 2026 GestureBoard · Araune, Sato &amp; Balili · Cristal e-College</p>
+      <a class="js-download" href="https://github.com/RalphAraune/Gestureboard/releases/latest/download/GestureBoard_Setup_1.0.0.exe">Download v<span class="js-download-version">1.0.0</span></a>
+    </div>
+  </footer>
+
+  <!-- Shown on phones/tablets instead of downloading -->
+  <div class="modal" id="mobile-modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-text">
+      <button class="modal__x" type="button" aria-label="Close" data-close>×</button>
+      <div class="modal__icon" aria-hidden="true">💻</div>
+      <h2 id="modal-title">Download on your PC</h2>
+      <p id="modal-text">GestureBoard is a Windows desktop app. Open this page on your Windows PC to download.</p>
+      <button class="btn btn--primary btn--block" type="button" id="copy-link">Copy link</button>
+      <p class="modal__status" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
