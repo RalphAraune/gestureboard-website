@@ -19,6 +19,44 @@
   --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
   --max: 1160px;
   --nav-h: 64px;
+  --accent-hover: #67e8f9;
+  --nav-bg: rgba(7, 15, 36, .85);
+  --alt-bg: rgba(10, 21, 48, .55);
+  --ghost-bg: rgba(255, 255, 255, .03);
+  --ghost-hover: rgba(255, 255, 255, .07);
+  --grid-dot: rgba(120, 170, 255, .16);
+  color-scheme: dark;
+}
+
+/* ---------- Light theme (toggled by the sun/moon button) ---------- */
+:root[data-theme="light"] {
+  --bg: #f4f7fd;
+  --bg-alt: #e9eff9;
+  --surface: #ffffff;
+  --surface-2: #e6edf9;
+  --border: rgba(15, 40, 90, .13);
+  --text: #0b1530;
+  --muted: #4a5a7a;
+  --accent: #0e7490;          /* darker cyan so text stays readable on white */
+  --accent-hover: #155e75;
+  --on-accent: #ffffff;
+  --shadow: 0 20px 45px -22px rgba(15, 40, 90, .35);
+  --nav-bg: rgba(244, 247, 253, .85);
+  --alt-bg: rgba(233, 239, 249, .6);
+  --ghost-bg: rgba(11, 21, 48, .03);
+  --ghost-hover: rgba(11, 21, 48, .07);
+  --grid-dot: rgba(30, 70, 150, .14);
+  color-scheme: light;
+}
+
+/* Pieces that picture the (dark) app itself stay dark in both themes */
+.mock, .phone__device, .card__icon {
+  --surface: #0f1d40; --surface-2: #142753; --bg-alt: #0a1530;
+  --border: rgba(120, 170, 255, .14); --muted: #9fb0d4; --accent: #22d3ee;
+}
+
+body, .nav, .section--alt, .card, .faq details, .member, .reqs > div, .gesture, .steps li {
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -55,6 +93,38 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
 
 .eyebrow { color: var(--accent); font-weight: 700; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .6em; }
 
+/* ---------- Animated background ----------
+   Fixed layer behind everything. Only transform/opacity are animated
+   (cheap for the GPU), and it is switched off for reduced-motion users. */
+.bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.bg__grid {
+  position: absolute; inset: -48px;
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1.5px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+  animation: grid-drift 24s linear infinite;
+}
+.bg__orb { position: absolute; border-radius: 50%; will-change: transform; }
+.bg__orb--1 { width: 60vmax; height: 60vmax; top: -20vmax; right: -15vmax; background: radial-gradient(circle, rgba(34, 211, 238, .16), transparent 65%); animation: orb-1 26s ease-in-out infinite alternate; }
+.bg__orb--2 { width: 70vmax; height: 70vmax; bottom: -30vmax; left: -25vmax; background: radial-gradient(circle, rgba(37, 99, 235, .22), transparent 65%); animation: orb-2 32s ease-in-out infinite alternate; }
+.bg__orb--3 { width: 40vmax; height: 40vmax; top: 40%; left: 45%; background: radial-gradient(circle, rgba(129, 140, 248, .10), transparent 65%); animation: orb-3 22s ease-in-out infinite alternate; }
+
+/* Faint hand-tracking skeleton (like MediaPipe landmarks) */
+.bg__hand { position: absolute; right: -6vmin; bottom: 4vh; width: min(70vmin, 560px); color: var(--accent); opacity: .14; transform: rotate(-12deg); animation: hand-float 14s ease-in-out infinite alternate; }
+.bg__line { stroke-dasharray: 420; stroke-dashoffset: 420; animation: draw 9s ease-in-out infinite; }
+.bg__dot { transform-box: fill-box; transform-origin: center; animation: pulse 3s ease-in-out infinite; }
+.bg__dot:nth-child(2n) { animation-delay: .6s; }
+.bg__dot:nth-child(3n) { animation-delay: 1.2s; }
+
+@keyframes grid-drift { to { transform: translate(48px, 48px); } }
+@keyframes orb-1 { to { transform: translate(-12vmax, 14vmax) scale(1.15); } }
+@keyframes orb-2 { to { transform: translate(16vmax, -12vmax) scale(1.1); } }
+@keyframes orb-3 { to { transform: translate(-20vmax, -10vmax) scale(.85); } }
+@keyframes hand-float { to { transform: rotate(-4deg) translateY(-3vh); } }
+@keyframes draw { 0% { stroke-dashoffset: 420; } 45%, 70% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -420; } }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: .6; } 50% { transform: scale(1.6); opacity: 1; } }
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .55em;
@@ -64,9 +134,9 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
 }
 .btn:hover { transform: translateY(-1px); }
 .btn--primary { background: var(--accent); color: var(--on-accent); box-shadow: 0 8px 24px -8px rgba(34, 211, 238, .55); }
-.btn--primary:hover { background: #67e8f9; }
-.btn--ghost { color: var(--text); border-color: var(--border); background: rgba(255,255,255,.03); }
-.btn--ghost:hover { background: rgba(255,255,255,.07); }
+.btn--primary:hover { background: var(--accent-hover); }
+.btn--ghost { color: var(--text); border-color: var(--border); background: var(--ghost-bg); }
+.btn--ghost:hover { background: var(--ghost-hover); }
 .btn--lg { padding: .9em 1.6em; font-size: 1.05rem; }
 .btn--sm { padding: .45em 1em; font-size: .92rem; }
 .btn--block { width: 100%; }
@@ -79,7 +149,7 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
 /* ---------- Navbar ---------- */
 .nav {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(7, 15, 36, .85);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -106,12 +176,21 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
 .nav__menu a:not(.btn):hover { background: var(--surface); }
 .nav__menu .btn { margin-top: 8px; }
 
+/* Light/dark toggle */
+.theme-toggle {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: inherit; color: var(--text); background: none; cursor: pointer;
+  border: 1px solid var(--border); border-radius: 999px; padding: 10px 14px; margin-top: 4px;
+}
+.theme-toggle:hover { background: var(--surface); }
+.theme-toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle__moon { display: none; }
+:root[data-theme="light"] .theme-toggle__sun { display: none; }
+:root[data-theme="light"] .theme-toggle__moon { display: block; }
+
 /* ---------- Hero ---------- */
 .hero {
-  position: relative; padding: 48px 0 64px; overflow: hidden;
-  background:
-    radial-gradient(600px 400px at 85% 20%, rgba(34, 211, 238, .14), transparent 70%),
-    radial-gradient(700px 500px at 0% 100%, rgba(26, 67, 151, .45), transparent 70%);
+  position: relative; padding: 48px 0 64px;
 }
 .hero__grid { display: grid; gap: 40px; align-items: center; }
 .lead { font-size: 1.1rem; color: var(--muted); max-width: 36em; }
@@ -135,7 +214,7 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
 
 /* ---------- Sections ---------- */
 .section { padding: 72px 0; }
-.section--alt { background: var(--bg-alt); border-block: 1px solid var(--border); }
+.section--alt { background: var(--alt-bg); border-block: 1px solid var(--border); }
 .section__head { max-width: 680px; margin: 0 auto 40px; text-align: center; }
 .section__head p:not(.eyebrow) { color: var(--muted); }
 
@@ -206,7 +285,9 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
 /* Team */
 .team { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
 .member { text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 20px; }
+.member h3 { margin-bottom: 8px; }
 .member p { color: var(--muted); margin: 0; font-size: .92rem; }
+.member .member__role { display: inline-block; margin-bottom: 8px; padding: 3px 12px; border-radius: 999px; font-size: .85rem; font-weight: 650; color: var(--accent); background: rgba(34, 211, 238, .1); border: 1px solid rgba(34, 211, 238, .35); }
 .avatar { width: 96px; height: 96px; margin: 0 auto 16px; border-radius: 50%; display: grid; place-items: center; font-size: 1.6rem; font-weight: 800; color: var(--on-accent); background: linear-gradient(135deg, var(--accent), #3b82f6); object-fit: cover; }
 .stack { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 .stack li { font-size: .85rem; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); }
@@ -251,6 +332,9 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
   .nav__menu a:not(.btn) { padding: 8px 12px; font-size: .95rem; color: var(--muted); }
   .nav__menu a:not(.btn):hover { color: var(--text); background: none; }
   .nav__menu .btn { margin: 0 0 0 8px; }
+  .theme-toggle { width: 40px; height: 40px; padding: 0; margin: 0 0 0 4px; justify-content: center; color: var(--muted); }
+  .theme-toggle:hover { color: var(--text); }
+  .theme-toggle__text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   .hero { padding: 88px 0 104px; }
   .hero__grid { grid-template-columns: 1.05fr 1fr; gap: 56px; }
@@ -269,4 +353,5 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .js-reveal .reveal { opacity: 1; transform: none; }
+  .bg__line { stroke-dashoffset: 0; }
 }

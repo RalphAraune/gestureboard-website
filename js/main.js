@@ -138,6 +138,33 @@ const DOWNLOAD_CONFIG = {
     if (e.matches) closeMenu();
   });
 
+  /* ---------- Light / dark mode ----------
+     Dark is the default (matches the desktop app). The visitor's choice
+     is remembered in localStorage; the small script in <head> applies it
+     before the page paints. */
+  const root = document.documentElement;
+  const themeBtn = document.querySelector(".theme-toggle");
+  const themeText = themeBtn.querySelector(".theme-toggle__text");
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    const next = theme === "light" ? "dark" : "light";
+    const label = `Switch to ${next} mode`;
+    themeBtn.setAttribute("aria-label", label);
+    themeBtn.title = label;
+    themeText.textContent = next === "light" ? "Light mode" : "Dark mode";
+    themeMeta.setAttribute("content", theme === "light" ? "#f4f7fd" : "#070f24");
+  }
+
+  applyTheme(root.getAttribute("data-theme") === "light" ? "light" : "dark");
+
+  themeBtn.addEventListener("click", () => {
+    const theme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    applyTheme(theme);
+    try { localStorage.setItem("gb-theme", theme); } catch (_) { /* private mode etc. */ }
+  });
+
   /* ---------- Subtle scroll reveal ---------- */
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduceMotion && "IntersectionObserver" in window) {
