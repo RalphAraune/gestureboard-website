@@ -99,7 +99,8 @@ The hero shows a drawn mock of the app window as a placeholder. To use a real sc
 2. In `index.html`, find `APP SCREENSHOT` and follow the instructions in the comment.
 
 ### 6. Team photos
-Find `To add photos` in `index.html`. Put photos in `assets/team/` and swap the initials for an `<img>`.
+The team section uses `assets/team/ralph.jpg`, `kher.jpg`, and `princess.jpg`. These are 256×256 cropped copies made from the originals in `assets/person/`.
+To change a photo, replace the file in `assets/team/` with a square JPG of the same name. Around 256×256 keeps the page fast.
 
 ### 7. System requirements
 These are in the `#requirements` section of `index.html`. The storage size (~500 MB) and processor are estimates, so please confirm them.

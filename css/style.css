@@ -288,7 +288,12 @@ code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; backg
 .member h3 { margin-bottom: 8px; }
 .member p { color: var(--muted); margin: 0; font-size: .92rem; }
 .member .member__role { display: inline-block; margin-bottom: 8px; padding: 3px 12px; border-radius: 999px; font-size: .85rem; font-weight: 650; color: var(--accent); background: rgba(34, 211, 238, .1); border: 1px solid rgba(34, 211, 238, .35); }
-.avatar { width: 96px; height: 96px; margin: 0 auto 16px; border-radius: 50%; display: grid; place-items: center; font-size: 1.6rem; font-weight: 800; color: var(--on-accent); background: linear-gradient(135deg, var(--accent), #3b82f6); object-fit: cover; }
+.avatar {
+  width: 112px; height: 112px; margin: 0 auto 16px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 1.6rem; font-weight: 800; color: var(--on-accent);
+  background: linear-gradient(135deg, var(--accent), #3b82f6); object-fit: cover;
+  border: 3px solid var(--surface); box-shadow: 0 0 0 2px var(--accent), 0 12px 28px -12px rgba(34, 211, 238, .45);
+}
 .stack { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 .stack li { font-size: .85rem; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); }
 
