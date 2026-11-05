@@ -76,19 +76,20 @@ All Download buttons and the "Version · Size" labels update from this object.
 
 `index.html` also contains the same link in each button's `href`. That copy is only a fallback for visitors who have JavaScript turned off. Search for `GestureBoard_Setup_` to update it too.
 
-### 2. Your real domain (SEO)
-Replace `https://gestureboard.example.com` with your real domain (e.g. `https://gestureboard.vercel.app`) in:
+### 2. Site domain (SEO)
+The live site is **https://gestureboardv1.vercel.app**. If the domain ever changes, update it in:
 - `index.html`: `canonical`, `og:url`, `og:image`, `twitter:image`
 - `robots.txt`
 - `sitemap.xml`
 
-Tip: search the whole project for `example.com`.
+Tip: search the whole project for `gestureboardv1.vercel.app`.
 
-After deploying, you can submit `https://YOUR-DOMAIN/sitemap.xml` in [Google Search Console](https://search.google.com/search-console) to get indexed faster.
+To get indexed faster, submit `https://gestureboardv1.vercel.app/sitemap.xml` in [Google Search Console](https://search.google.com/search-console).
 
 ### 3. Gesture guide
 In `index.html`, find `EDIT GESTURES HERE`. Each gesture is one `<li class="gesture">` block with an emoji, a name, and what it does.
 **The current gestures are placeholders. Update them to match the real app.**
+Keep in mind that hand gestures are only for **slide control** and the **virtual mouse**. Digital annotation and the virtual whiteboard use the regular mouse.
 
 ### 4. Feedback link
 In `index.html`, find `FEEDBACK LINK` and replace `href="#"` with your Google Form (or other) URL.
@@ -99,7 +100,7 @@ The hero shows a drawn mock of the app window as a placeholder. To use a real sc
 2. In `index.html`, find `APP SCREENSHOT` and follow the instructions in the comment.
 
 ### 6. Team photos
-The team section uses `assets/team/ralph.jpg`, `kher.jpg`, and `princess.jpg`. These are 256×256 cropped copies made from the originals in `assets/person/`.
+The team section uses `assets/team/ralph.jpg`, `kher.jpg`, and `princess.jpg` (256×256, cropped to head and shoulders).
 To change a photo, replace the file in `assets/team/` with a square JPG of the same name. Around 256×256 keeps the page fast.
 
 ### 7. System requirements

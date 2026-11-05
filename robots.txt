@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Replace the domain below with your real domain
-Sitemap: https://gestureboard.example.com/sitemap.xml
+# If the domain changes, update it here too
+Sitemap: https://gestureboardv1.vercel.app/sitemap.xml

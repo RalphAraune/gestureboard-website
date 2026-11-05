@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- ===== SEO =====
-       Replace https://gestureboard.example.com with your real domain
+       Site URL: https://gestureboardv1.vercel.app. If the domain changes, update it here
        (also in robots.txt and sitemap.xml). -->
   <title>GestureBoard – Gesture-Controlled Presentation App for Windows</title>
   <meta name="description" content="GestureBoard lets teachers control PowerPoint and other presentations with hand gestures using a webcam or phone camera. Free, works offline, for Windows 10/11.">
@@ -13,15 +13,15 @@
   <meta name="author" content="Ralph Lawrence Araune, Kher Noel Sato, Princess Claire Balili">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#070f24">
-  <link rel="canonical" href="https://gestureboard.example.com/">
+  <link rel="canonical" href="https://gestureboardv1.vercel.app/">
 
   <!-- Open Graph (Facebook / Messenger previews) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GestureBoard">
   <meta property="og:title" content="GestureBoard – Control your slides with a wave of your hand">
   <meta property="og:description" content="A free Windows app that lets teachers control presentations with hand gestures. Works offline, and your phone can be the camera.">
-  <meta property="og:url" content="https://gestureboard.example.com/">
-  <meta property="og:image" content="https://gestureboard.example.com/assets/og-image.png">
+  <meta property="og:url" content="https://gestureboardv1.vercel.app/">
+  <meta property="og:image" content="https://gestureboardv1.vercel.app/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="GestureBoard logo with the tagline: Control your slides with a wave of your hand.">
@@ -31,7 +31,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GestureBoard – Gesture-Controlled Presentation App">
   <meta name="twitter:description" content="Control your slides with a wave of your hand. Free for Windows.">
-  <meta name="twitter:image" content="https://gestureboard.example.com/assets/og-image.png">
+  <meta name="twitter:image" content="https://gestureboardv1.vercel.app/assets/og-image.png">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/logo/app_icon.ico" sizes="any">
@@ -136,8 +136,8 @@
           <h1>Control your slides with <span class="grad-text">a wave of your hand.</span></h1>
           <p class="lead">
             <strong>GestureBoard</strong> turns your webcam or phone into a presentation remote.
-            Move between slides, point, draw, and write using only hand gestures. It's built for the
-            teachers of Lourdes National High School.
+            Change slides and move the cursor with hand gestures, then annotate your slides or use the
+            whiteboard with your mouse. It's built for the teachers of Lourdes National High School.
           </p>
           <div class="cta">
             <a class="btn btn--primary btn--lg js-download" href="https://github.com/RalphAraune/Gestureboard/releases/latest/download/GestureBoard_Setup_1.0.0.exe">
@@ -188,7 +188,7 @@
           </div>
           <!-- Floating chips around the screenshot (decoration) -->
           <span class="chip chip--1" aria-hidden="true">👉 Next slide</span>
-          <span class="chip chip--2" aria-hidden="true">✏️ Annotate</span>
+          <span class="chip chip--2" aria-hidden="true">☝️ Virtual mouse</span>
           <span class="chip chip--3" aria-hidden="true">📶 Works offline</span>
         </div>
       </div>
@@ -212,28 +212,32 @@
         <header class="section__head">
           <p class="eyebrow">Features</p>
           <h2>Everything you need at the front of the classroom</h2>
-          <p>No clicker, no running back to the keyboard. Teach from anywhere in the room.</p>
+          <p>Change slides and move the cursor with your hand, without a clicker. When you want to draw or write, use your mouse.</p>
         </header>
         <div class="cards">
           <article class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4m0-5a1.5 1.5 0 0 1 3 0v5m0-4a1.5 1.5 0 0 1 3 0v6m0-3a1.5 1.5 0 0 1 3 0v4a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L3.6 14a1.5 1.5 0 0 1 2.5-1.7L7 13.5"/></svg></div>
+            <span class="card__tag card__tag--hand">✋ Hand gestures</span>
             <h3>Hand gesture slide control</h3>
             <p>Go to the next or previous slide with a simple hand gesture in front of the camera.</p>
           </article>
           <article class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l6 16 2.3-6.7L20 10z"/><path d="M13.5 13.5 19 19"/></svg></div>
+            <span class="card__tag card__tag--hand">✋ Hand gestures</span>
             <h3>Virtual mouse</h3>
             <p>Move the cursor and click with your fingers. Open files and links without touching the PC.</p>
           </article>
           <article class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11a2.1 2.1 0 0 0-3-3L5 16z"/><path d="M14 7l3 3"/></svg></div>
+            <span class="card__tag card__tag--mouse">🖱️ Mouse</span>
             <h3>Digital annotation</h3>
-            <p>Draw and highlight directly on top of your slides using the mouse.</p>
+            <p>Draw and highlight directly on top of your slides with your mouse.</p>
           </article>
           <article class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20l4-4 4 4M7 9c2-2 3 2 5 0s3 2 5 0"/></svg></div>
+            <span class="card__tag card__tag--mouse">🖱️ Mouse</span>
             <h3>Virtual whiteboard</h3>
-            <p>Open a blank board to explain, solve, and sketch, using the mouse.</p>
+            <p>Open a blank board to explain, solve, and sketch with your mouse.</p>
           </article>
           <article class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></div>
@@ -275,8 +279,8 @@
             <p>Start your slideshow in PowerPoint, Google Slides, or a PDF viewer.</p>
           </li>
           <li>
-            <h3>Control with gestures</h3>
-            <p>Raise your hand toward the camera and teach. GestureBoard tracks your hand in real time.</p>
+            <h3>Teach with gestures</h3>
+            <p>Change slides and move the cursor with your hand while GestureBoard tracks it in real time. Use your mouse to annotate or open the whiteboard.</p>
           </li>
         </ol>
       </div>
@@ -288,7 +292,7 @@
         <header class="section__head">
           <p class="eyebrow">Gesture guide</p>
           <h2>Learn the gestures</h2>
-          <p>Hold your hand clearly in front of the camera, about an arm's length away.</p>
+          <p>Hand gestures control the slides and the virtual mouse. Hold your hand clearly in front of the camera, about an arm's length away.</p>
         </header>
 
         <!-- ========== EDIT GESTURES HERE ==========
@@ -444,6 +448,10 @@
             <p>Yes. The "Windows protected your PC" message appears because the app is new and isn't signed with a paid code-signing certificate. It doesn't mean the app is harmful. GestureBoard doesn't collect or upload your camera feed, because all processing happens on your computer. The source code is public on <a href="https://github.com/RalphAraune/Gestureboard" target="_blank" rel="noopener">GitHub</a>.</p>
           </details>
           <details>
+            <summary>Can I draw or write with hand gestures?</summary>
+            <p>No. Hand gestures are for changing slides and controlling the virtual mouse. Digital annotation and the virtual whiteboard are used with your regular mouse.</p>
+          </details>
+          <details>
             <summary>Can I use it with PowerPoint and Google Slides?</summary>
             <p>Yes. Gesture slide control sends standard next/previous keystrokes, so it works with most slideshow apps, including PowerPoint, Google Slides in a browser, and PDF viewers.</p>
           </details>
@@ -463,7 +471,7 @@
             <strong>Lourdes National High School</strong> using Python, OpenCV, MediaPipe, and PyQt5.
           </p>
         </header>
-        <!-- Team photos: 256×256 JPGs in assets/team/ (originals are in assets/person/).
+        <!-- Team photos: 256×256 JPGs in assets/team/.
              Facebook links: change the href of each <a class="member__fb">. -->
         <ul class="team">
           <li class="member">
